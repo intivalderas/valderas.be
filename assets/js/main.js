@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   run(window.initParallax);
 
   // Interactive features
+  run(window.initPortrait);
   run(window.initStickers);
   run(window.initDraw);
   run(window.initDarkMode);

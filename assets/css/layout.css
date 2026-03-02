@@ -22,7 +22,7 @@
 .main-content {
   flex: 1;
   min-width: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Content area */
@@ -31,20 +31,24 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
 }
 
-/* Push bottom section to the end */
-.sidebar__bottom {
-  margin-top: auto;
-}
+/* Top wrapper */
+.sidebar__top {}
+
+/* Center wrapper */
+.sidebar__center {}
+
+/* Bottom wrapper */
+.sidebar__bottom {}
 
 /* Nav section */
 .sidebar__logo {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-bottom: 1.75rem;
   display: block;
 }
 
@@ -57,7 +61,7 @@
 .sidebar__link {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray-600);
@@ -74,7 +78,7 @@
   border: none;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gray-600);
@@ -111,10 +115,9 @@ button.sidebar__link--small {
   color: var(--gray-400);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
-/* Bottom section — pinned to bottom */
 .sidebar__bottom {
   display: flex;
   flex-direction: column;
@@ -422,6 +425,8 @@ body.draw-marker .draw-tool__colors {
   .sidebar__content {
     width: 100%;
     padding: 5rem 2rem 2rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .sidebar__logo {
@@ -454,6 +459,45 @@ body.draw-marker .draw-tool__colors {
 
   .main-content {
     width: 100%;
+  }
+
+  /* Make settings & sticker menus inline instead of absolute popovers */
+  .sidebar__bottom .settings__menu,
+  .sidebar__bottom .sticker-tray__items {
+    position: static;
+    left: auto;
+    bottom: auto;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid var(--gray-200);
+    padding: 0.75rem 0;
+    transform: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s var(--ease-out-expo),
+                opacity 0.25s ease,
+                padding 0.35s var(--ease-out-expo);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .sidebar__bottom .settings__panel--open .settings__menu {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0.75rem 0;
+    transform: none;
+  }
+
+  .sidebar__bottom .sticker-tray--open .sticker-tray__items {
+    max-height: 500px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0.75rem 0;
+    transform: none;
   }
 }
 

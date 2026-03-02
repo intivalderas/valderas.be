@@ -22,7 +22,10 @@
   #particleCanvas,
   .cursor,
   .cursor-follower,
-  .resume__actions {
+  .resume__actions,
+  .sidebar-toggle,
+  .sidebar__overlay,
+  .skip-link {
     display: none !important;
   }
 

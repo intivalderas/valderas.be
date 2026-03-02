@@ -173,12 +173,40 @@ body.reduced-effects .marquee__track {
   animation-play-state: paused;
 }
 
+body.reduced-effects .kind-words__grid {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  clip-path: none;
+  scrollbar-width: thin;
+  cursor: grab;
+}
+
+body.reduced-effects .kind-words__grid:active {
+  cursor: grabbing;
+}
+
+body.reduced-effects .kind-words__track {
+  animation: none;
+}
+
 body.reduced-effects .hero__label,
+body.reduced-effects .hero__name,
 body.reduced-effects .hero__title,
 body.reduced-effects .hero__subtitle,
 body.reduced-effects .hero__tags,
-body.reduced-effects .hero__cta {
+body.reduced-effects .hero__cta,
+body.reduced-effects .hero__portrait {
   animation: none;
   opacity: 1;
   transform: none;
+}
+
+body.reduced-effects .hero__glare {
+  display: none;
+}
+
+body.reduced-effects .split-text .letter {
+  opacity: 1;
+  transform: none;
+  animation: none;
 }

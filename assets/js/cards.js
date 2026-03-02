@@ -104,7 +104,7 @@ window.initKindWordsVibes = function () {
   var heartColors = ['#ff8a80', '#f48fb1', '#ffab91', '#ffcc80'];
   var sparkleColors = ['#ffd54f', '#fff176', '#ffffff'];
   var particles = [];
-  var maxParticles = 18;
+  var maxParticles = 24;
 
   function spawnParticle() {
     var isHeart = Math.random() > 0.4;
@@ -113,12 +113,12 @@ window.initKindWordsVibes = function () {
       y: canvas.height + 10,
       vx: (Math.random() - 0.5) * 0.3,
       vy: -(0.3 + Math.random() * 0.5),
-      size: isHeart ? 10 + Math.random() * 8 : 8 + Math.random() * 6,
+      size: isHeart ? 22 + Math.random() * 18 : 16 + Math.random() * 14,
       char: isHeart ? '\u2665' : '\u2726',
       color: isHeart
         ? heartColors[Math.floor(Math.random() * heartColors.length)]
         : sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
-      opacity: 0.7 + Math.random() * 0.3,
+      opacity: 0.35 + Math.random() * 0.2,
       phase: Math.random() * Math.PI * 2
     };
   }

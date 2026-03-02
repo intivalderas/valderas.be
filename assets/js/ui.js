@@ -59,6 +59,7 @@ window.initSmoothScroll = function () {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
+        document.body.classList.remove('resume-mode');
         const offset = 80;
         const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: targetPosition, behavior: 'smooth' });

@@ -75,6 +75,7 @@
 
 
 window.initLetterAnimation = function () {
+  if (document.body.classList.contains('reduced-effects')) return;
   document.querySelectorAll('.split-text').forEach(el => {
     const text = el.textContent;
     el.innerHTML = '';
@@ -90,6 +91,7 @@ window.initLetterAnimation = function () {
 
 
 window.initTextScramble = function () {
+  if (document.body.classList.contains('reduced-effects')) return;
   const targets = document.querySelectorAll('.section__title');
 
   const observer = new IntersectionObserver((entries) => {

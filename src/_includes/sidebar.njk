@@ -8,8 +8,10 @@
 <!-- Sidebar Navigation -->
 <aside class="sidebar" id="sidebar" aria-label="Main navigation">
   <div class="sidebar__content">
-    <nav class="sidebar__nav">
+    <div class="sidebar__top">
       <a href="/" class="sidebar__logo">Inti Valderas Caro</a>
+    </div>
+    <nav class="sidebar__center">
       <div class="sidebar__links">
         <a href="{% if isHome %}#about{% else %}/#about{% endif %}" class="sidebar__link">About</a>
         <a href="{% if isHome %}#contact{% else %}/#contact{% endif %}" class="sidebar__link">Contact</a>
@@ -124,7 +126,8 @@
       <div class="sidebar__divider"></div>
       <button class="sidebar__link sidebar__link--small" id="cookieSettings" type="button">Cookie settings</button>
       <a href="/accessibility/" class="sidebar__link sidebar__link--small">Accessibility</a>
+      <a href="/credits/" class="sidebar__link sidebar__link--small">Credits</a>
+      <p class="sidebar__copyright">&copy; 2026 Inti Valderas Caro</p>
     </div>
-    <p class="sidebar__copyright">&copy; 2026 Inti Valderas Caro</p>
   </div>
 </aside>

@@ -149,10 +149,12 @@ img {
   }
 
   .hero__label,
+  .hero__name,
   .hero__title,
   .hero__subtitle,
   .hero__tags,
-  .hero__cta {
+  .hero__cta,
+  .hero__portrait {
     opacity: 1;
     transform: none;
     animation: none;

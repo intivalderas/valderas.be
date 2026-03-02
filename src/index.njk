@@ -6,8 +6,33 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
 
 <!-- Hero -->
 <header class="hero">
+  <div class="hero__portrait" id="heroPortrait">
+    <div class="hero__frame">
+      <img src="/assets/img/inti-portrait.webp" alt="Inti Valderas Caro" class="hero__photo">
+      <div class="hero__glare"></div>
+      <div class="hero__sticker-bar">
+        <button class="hero__sticker-btn" data-sticker="inti-serious" data-tooltip="Serious" aria-label="Serious face">
+          <img src="/assets/img/stickers/inti-serious.webp" alt="">
+        </button>
+        <button class="hero__sticker-btn" data-sticker="inti-cool" data-tooltip="Cool" aria-label="Cool face">
+          <img src="/assets/img/stickers/inti-cool.webp" alt="">
+        </button>
+        <button class="hero__sticker-btn" data-sticker="inti-party" data-tooltip="Party" aria-label="Party face">
+          <img src="/assets/img/stickers/inti-party.webp" alt="">
+        </button>
+        <button class="hero__sticker-btn" data-sticker="inti-minecraft" data-tooltip="Minecraft" aria-label="Minecraft face">
+          <img src="/assets/img/stickers/inti-minecraft.webp" alt="">
+        </button>
+        <button class="hero__sticker-btn" data-sticker="inti-shocked" data-tooltip="Shocked" aria-label="Shocked face">
+          <img src="/assets/img/stickers/inti-shocked.webp" alt="">
+        </button>
+        <button class="hero__sticker-clear" id="heroStickerClear" aria-label="Clear stickers">&times;</button>
+      </div>
+    </div>
+  </div>
   <div class="hero__content">
     <div class="hero__label label">UX & Interaction Designer</div>
+    <p class="hero__name">Inti Valderas Caro</p>
     <h1 class="hero__title" data-scramble>
       <span class="split-text" data-text="Designing thoughtful">Designing thoughtful</span><br>
       <span class="split-text" data-text="digital experiences">digital experiences</span>
@@ -148,7 +173,7 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
     <h2 class="section__title reveal">Don't just take my word for it</h2>
     <p class="section__subtitle reveal">Here's what happens when you let other people write your bio.</p>
   </div>
-  <div class="kind-words__grid">
+  {% set cards %}
     <blockquote class="kind-words__card reveal">
       <a href="https://www.linkedin.com/in/valeriecz" target="_blank" rel="noopener noreferrer">
         <img src="/assets/img/recommendations/valerie-czaplewski.jpg" alt="Valerie Czaplewski" class="kind-words__photo" loading="lazy">
@@ -221,6 +246,12 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
         </footer>
       </div>
     </blockquote>
+  {% endset %}
+  <div class="kind-words__grid">
+    <div class="kind-words__track">
+      {{ cards | safe }}
+      {{ cards | safe }}
+    </div>
   </div>
 </section>
 
