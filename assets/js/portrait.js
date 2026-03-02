@@ -16,6 +16,7 @@ window.initPortrait = function () {
   for (var i = 0; i < slapCount; i++) {
     var a = new Audio('/assets/sfx/slap-' + (i + 1) + '.webm');
     a.preload = 'auto';
+    a.volume = 0.1;
     slaps.push(a);
   }
 
@@ -95,6 +96,35 @@ window.initPortrait = function () {
     });
   }
 
+  // --- Favicon swap ---
+  var defaultFavicon = document.querySelector('link[rel="icon"][sizes="32x32"]');
+  var defaultHref = defaultFavicon ? defaultFavicon.href : '';
+
+  function setFavicon(src) {
+    var icon = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (!icon) return;
+    var faviconImg = new Image();
+    faviconImg.crossOrigin = 'anonymous';
+    faviconImg.onload = function () {
+      var c = document.createElement('canvas');
+      c.width = 32;
+      c.height = 32;
+      var ctx = c.getContext('2d');
+      ctx.beginPath();
+      ctx.arc(16, 16, 16, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(faviconImg, 0, 0, 32, 32);
+      icon.href = c.toDataURL('image/png');
+    };
+    faviconImg.src = src;
+  }
+
+  function resetFavicon() {
+    var icon = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (icon && defaultHref) icon.href = defaultHref;
+  }
+
   // --- Sticker buttons ---
   container.querySelectorAll('.hero__sticker-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -112,6 +142,7 @@ window.initPortrait = function () {
       void frame.offsetWidth;
       frame.classList.add('hero__frame--slap');
       playSlap();
+      setFavicon(img.src);
       // Wait one frame so the sticker has layout before reading its rect
       requestAnimationFrame(function () { spawnBurst(img); });
       window.psTrack('Portrait_Sticker_' + name);
@@ -123,6 +154,7 @@ window.initPortrait = function () {
   if (clearBtn) {
     clearBtn.addEventListener('click', function () {
       frame.querySelectorAll('.hero__face-sticker').forEach(function (s) { s.remove(); });
+      resetFavicon();
     });
   }
 };
