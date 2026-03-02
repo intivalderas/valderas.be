@@ -1,0 +1,54 @@
+---
+layout: article.njk
+title: "Accessibility — Inti Valderas Caro"
+pageStyles: |
+  .article { max-width: 680px; margin: 0 auto; padding: 6rem 2rem; }
+  .article__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--gray-400); margin-bottom: 3rem; transition: color 0.3s ease; }
+  .article__back:hover { color: var(--black); }
+  .article__title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 2rem; }
+  .article p { color: var(--gray-800); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem; }
+  .article h2 { font-size: 1.3rem; font-weight: 600; margin: 3rem 0 1rem; }
+  .article ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+  .article li { color: var(--gray-800); line-height: 1.9; font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .article a { text-decoration: underline; text-underline-offset: 0.2em; }
+  .article__updated { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 3rem; }
+permalink: /accessibility/
+---
+
+<article class="article" id="content">
+  <a href="/" class="article__back">&larr; Back to overview</a>
+
+  <h1 class="article__title">Accessibility Statement</h1>
+
+  <h2>Commitment</h2>
+  <p>
+    I'm committed to making this website accessible to everyone.
+    The site targets conformance with <strong>WCAG 2.1 Level AA</strong> and is continuously improved based on testing and feedback.
+  </p>
+
+  <h2>What we do</h2>
+  <ul>
+    <li>Semantic HTML for clear document structure and landmarks</li>
+    <li>Full keyboard navigation across all interactive elements</li>
+    <li>A skip-to-content link for bypassing navigation</li>
+    <li>Sufficient color contrast ratios across light and dark themes</li>
+    <li>Screen reader support with ARIA labels and roles where needed</li>
+    <li>Respect for <code>prefers-reduced-motion</code> — animations are disabled automatically for users who prefer reduced motion</li>
+    <li>A settings panel to manually disable particles, motion effects, and the custom cursor</li>
+  </ul>
+
+  <h2>Known limitations</h2>
+  <ul>
+    <li><strong>Custom cursor</strong> — A decorative custom cursor replaces the default on desktop. It can be disabled via the settings panel or is automatically hidden on touch devices.</li>
+    <li><strong>Canvas particles</strong> — A decorative particle effect runs on a background canvas element. It is marked <code>aria-hidden</code> and can be disabled via settings.</li>
+    <li><strong>Motion effects</strong> — Scroll-based animations and text effects are present throughout the site. These are automatically disabled when <code>prefers-reduced-motion</code> is set in your operating system, and can also be toggled off in the settings panel.</li>
+  </ul>
+
+  <h2>Feedback</h2>
+  <p>
+    If you encounter any accessibility barriers on this site, I'd love to hear about it.
+    Please reach out at <a href="mailto:inti@valderas.be">inti@valderas.be</a> and I'll do my best to address it.
+  </p>
+
+  <p class="article__updated">Last updated — March 2026</p>
+</article>

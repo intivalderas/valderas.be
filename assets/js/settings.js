@@ -91,6 +91,8 @@ window.initSettings = function () {
     if (disableAllPref === 'true') {
       if (disableAllToggle) disableAllToggle.checked = true;
     }
+
+    updateDisableAllLabel();
   }
 
   loadPrefs();
@@ -176,6 +178,13 @@ window.initSettings = function () {
   }
 
   // --- Disable all effects (master toggle) ---
+  var disableAllLabel = document.getElementById('settingDisableAllLabel');
+
+  function updateDisableAllLabel() {
+    if (!disableAllLabel) return;
+    disableAllLabel.textContent = disableAllToggle && disableAllToggle.checked ? 'Enable all' : 'Disable all';
+  }
+
   function uncheckMasterIfNeeded() {
     if (!disableAllToggle || !disableAllToggle.checked) return;
     // If any effect toggle was re-enabled, uncheck master
@@ -186,6 +195,7 @@ window.initSettings = function () {
     if (anyOn) {
       disableAllToggle.checked = false;
       localStorage.setItem('setting-disable-all', 'false');
+      updateDisableAllLabel();
     }
   }
 
@@ -195,6 +205,7 @@ window.initSettings = function () {
       console.log('[setting] disable all:', disabling ? 'on' : 'off');
       window.psTrack('Setting_DisableAll_' + (disabling ? 'On' : 'Off'));
       localStorage.setItem('setting-disable-all', String(disabling));
+      updateDisableAllLabel();
 
       if (disabling) {
         // Turn off all effect toggles
