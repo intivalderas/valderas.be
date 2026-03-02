@@ -14,6 +14,42 @@ window.initNav = function () {
     }
   });
 
+  // Mobile sidebar toggle
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    sidebar.classList.add('sidebar--open');
+    toggle.classList.add('sidebar-toggle--open');
+    overlay.classList.add('sidebar__overlay--visible');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('sidebar--open');
+    toggle.classList.remove('sidebar-toggle--open');
+    overlay.classList.remove('sidebar__overlay--visible');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  }
+
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function () {
+      if (sidebar.classList.contains('sidebar--open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+
+    if (overlay) {
+      overlay.addEventListener('click', closeSidebar);
+    }
+
+    window.closeSidebar = closeSidebar;
+  }
 };
 
 
