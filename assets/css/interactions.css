@@ -162,6 +162,12 @@
   100% { transform: translate(0, 0); }
 }
 
+@media (max-width: 768px) {
+  .noise-overlay {
+    display: none;
+  }
+}
+
 /* --- Particle Canvas --- */
 #particleCanvas {
   position: fixed;
