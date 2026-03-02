@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
   run(window.initParallax);
   run(window.initDepthParallax);
 
+  // Contact form
+  run(window.initContact);
+
   // Interactive features
   run(window.initPortrait);
   run(window.initStickers);
