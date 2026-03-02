@@ -394,35 +394,23 @@ img {
   z-index: 10;
 }
 
-/* Shared trigger style — match .sidebar__link */
+/* Bottom triggers — reset base component styles, inherit .sidebar__link */
 .sidebar__bottom .settings__toggle,
 .sidebar__bottom .sticker-tray__toggle {
   width: 100%;
   height: auto;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
   gap: 8px;
   border: none;
   border-radius: 0;
   background: none;
-  padding: 0.5rem 0;
-  color: var(--gray-600);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-align: left;
-  transition: color 0.2s ease;
+  box-shadow: none;
+  transform: none;
 }
 
 .sidebar__bottom .settings__toggle:hover,
 .sidebar__bottom .sticker-tray__toggle:hover {
-  color: var(--black);
-  background: none;
   transform: none;
-  border-color: transparent;
 }
 
 /* Settings trigger label */
