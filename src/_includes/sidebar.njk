@@ -13,6 +13,7 @@
     </div>
     <nav class="sidebar__center">
       <div class="sidebar__links">
+        <a href="{% if isHome %}#work{% else %}/#work{% endif %}" class="sidebar__link">Work</a>
         <a href="{% if isHome %}#about{% else %}/#about{% endif %}" class="sidebar__link">About</a>
         <a href="{% if isHome %}#contact{% else %}/#contact{% endif %}" class="sidebar__link">Contact</a>
         <button class="sidebar__link sidebar__link--btn" id="resumeToggle" type="button">Resume</button>

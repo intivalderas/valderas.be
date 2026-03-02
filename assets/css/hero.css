@@ -146,6 +146,16 @@
   animation: fadeUp 0.8s var(--ease-out-expo) 1.2s forwards;
 }
 
+.hero__caption {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--gray-400);
+  text-align: center;
+  margin-top: 0.75rem;
+  letter-spacing: 0.02em;
+  max-width: 280px;
+}
+
 .hero__frame {
   position: relative;
   border-radius: 16px;

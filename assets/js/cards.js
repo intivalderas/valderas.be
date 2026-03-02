@@ -100,25 +100,23 @@ window.initKindWordsVibes = function () {
   resize();
   window.addEventListener('resize', resize);
 
-  // --- Particles ---
-  var heartColors = ['#ff8a80', '#f48fb1', '#ffab91', '#ffcc80'];
-  var sparkleColors = ['#ffd54f', '#fff176', '#ffffff'];
+  // --- Confetti line particles ---
+  var confettiColors = ['#ff8a80', '#f48fb1', '#ffab91', '#ffcc80', '#ffd54f', '#fff176', '#e0e7ff', '#c4b5fd'];
   var particles = [];
-  var maxParticles = 24;
+  var maxParticles = 28;
 
   function spawnParticle() {
-    var isHeart = Math.random() > 0.4;
     return {
       x: Math.random() * canvas.width,
       y: canvas.height + 10,
       vx: (Math.random() - 0.5) * 0.3,
       vy: -(0.3 + Math.random() * 0.5),
-      size: isHeart ? 22 + Math.random() * 18 : 16 + Math.random() * 14,
-      char: isHeart ? '\u2665' : '\u2726',
-      color: isHeart
-        ? heartColors[Math.floor(Math.random() * heartColors.length)]
-        : sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
-      opacity: 0.35 + Math.random() * 0.2,
+      length: 12 + Math.random() * 20,
+      thickness: 2 + Math.random() * 3,
+      angle: Math.random() * Math.PI,
+      spin: (Math.random() - 0.5) * 0.02,
+      color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+      opacity: 0.35 + Math.random() * 0.25,
       phase: Math.random() * Math.PI * 2
     };
   }
@@ -141,6 +139,7 @@ window.initKindWordsVibes = function () {
       var p = particles[i];
       p.x += p.vx + Math.sin(time + p.phase) * 0.3;
       p.y += p.vy;
+      p.angle += p.spin;
 
       // Fade near top
       var fadeZone = canvas.height * 0.2;
@@ -152,9 +151,17 @@ window.initKindWordsVibes = function () {
       }
 
       ctx.globalAlpha = alpha;
-      ctx.font = p.size + 'px serif';
-      ctx.fillStyle = p.color;
-      ctx.fillText(p.char, p.x, p.y);
+      ctx.strokeStyle = p.color;
+      ctx.lineWidth = p.thickness;
+      ctx.lineCap = 'round';
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.beginPath();
+      ctx.moveTo(-p.length / 2, 0);
+      ctx.lineTo(p.length / 2, 0);
+      ctx.stroke();
+      ctx.restore();
     }
 
     ctx.globalAlpha = 1;

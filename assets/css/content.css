@@ -53,6 +53,70 @@
   gap: 0.4rem;
 }
 
+/* --- Work --- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.work-card {
+  display: block;
+  padding: 2rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.work-card:hover {
+  border-color: var(--black);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.work-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.work-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.work-card:hover .work-card__title {
+  color: var(--gray-600);
+}
+
+.work-card__desc {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.work-card__link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--black);
+  transition: letter-spacing 0.3s var(--ease-out-expo);
+}
+
+.work-card:hover .work-card__link {
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Blog --- */
 .blog-grid {
   display: grid;

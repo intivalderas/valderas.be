@@ -21,9 +21,14 @@ window.initPortrait = function () {
   }
 
   // --- Burst particles on sticker placement ---
+  var activeParticles = 0;
+  var MAX_PARTICLES = 60;
+
   function spawnBurst(stickerImg) {
+    if (activeParticles >= MAX_PARTICLES) return;
+
     var rect = stickerImg.getBoundingClientRect();
-    var count = 10 + Math.floor(Math.random() * 6);
+    var count = Math.min(8, MAX_PARTICLES - activeParticles);
     var sides = ['top', 'bottom', 'left', 'right'];
 
     for (var i = 0; i < count; i++) {
@@ -60,8 +65,25 @@ window.initPortrait = function () {
         '--dx:' + dx.toFixed(0) + 'px;--dy:' + dy.toFixed(0) + 'px;' +
         'animation-duration:' + (0.4 + Math.random() * 0.3).toFixed(2) + 's';
       document.body.appendChild(dot);
-      dot.addEventListener('animationend', function () { dot.remove(); });
+      activeParticles++;
+      dot.addEventListener('animationend', function () { dot.remove(); activeParticles--; });
     }
+  }
+
+  // --- Spam click tracking ---
+  var rapidClicks = 0;
+  var rapidTimer = null;
+  var RAPID_WINDOW = 400;  // ms between clicks to count as rapid
+  var SHAKE_THRESHOLD = 6;
+  var EXPLODE_THRESHOLD = 10;
+  var MAX_STICKERS = 20;
+  var lastClickTime = 0;
+  var MIN_CLICK_INTERVAL = 80; // ms — throttle taps on mobile
+
+  function trackRapidClick() {
+    rapidClicks++;
+    clearTimeout(rapidTimer);
+    rapidTimer = setTimeout(function () { rapidClicks = 0; }, RAPID_WINDOW);
   }
 
   function playSlap() {
@@ -70,7 +92,60 @@ window.initPortrait = function () {
     lastSlap = idx;
     var s = slaps[idx];
     s.currentTime = 0;
+    // Pitch escalation: gets higher with rapid clicks
+    var pitch = Math.min(1 + rapidClicks * 0.12, 2.5);
+    s.playbackRate = pitch;
     s.play().catch(function () {});
+  }
+
+  var isShaking = false;
+
+  function screenShake() {
+    if (isShaking) return;
+    isShaking = true;
+    var intensity = 4 + rapidClicks * 0.5;
+    var duration = 300;
+    var start = performance.now();
+    var mainContent = document.querySelector('.main-content') || document.body;
+
+    function shake(now) {
+      var elapsed = now - start;
+      if (elapsed > duration) {
+        mainContent.style.transform = '';
+        isShaking = false;
+        return;
+      }
+      var decay = 1 - elapsed / duration;
+      var x = (Math.random() - 0.5) * 2 * intensity * decay;
+      var y = (Math.random() - 0.5) * 2 * intensity * decay;
+      mainContent.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      requestAnimationFrame(shake);
+    }
+    requestAnimationFrame(shake);
+  }
+
+  function explodeStickers() {
+    var stickers = frame.querySelectorAll('.hero__face-sticker');
+    if (!stickers.length) return;
+
+    stickers.forEach(function (s) {
+      var angle = Math.random() * Math.PI * 2;
+      var dist = 300 + Math.random() * 400;
+      var dx = Math.cos(angle) * dist;
+      var dy = Math.sin(angle) * dist;
+      var spin = (Math.random() - 0.5) * 720;
+      s.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease';
+      s.style.transform = 'translate(' + dx.toFixed(0) + 'px,' + dy.toFixed(0) + 'px) rotate(' + spin.toFixed(0) + 'deg)';
+      s.style.opacity = '0';
+      s.style.pointerEvents = 'none';
+    });
+
+    setTimeout(function () {
+      stickers.forEach(function (s) { s.remove(); });
+      resetFavicon();
+    }, 650);
+
+    rapidClicks = 0;
   }
 
   // --- Glare: mouse tracking ---
@@ -128,6 +203,28 @@ window.initPortrait = function () {
   // --- Sticker buttons ---
   container.querySelectorAll('.hero__sticker-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      // Throttle rapid taps to prevent mobile crash
+      var now = Date.now();
+      if (now - lastClickTime < MIN_CLICK_INTERVAL) return;
+      lastClickTime = now;
+
+      trackRapidClick();
+
+      // Explode at threshold
+      if (rapidClicks >= EXPLODE_THRESHOLD) {
+        screenShake();
+        explodeStickers();
+        playSlap();
+        window.psTrack('Portrait_Sticker_Explode');
+        return;
+      }
+
+      // Cap stickers in frame
+      var existing = frame.querySelectorAll('.hero__face-sticker');
+      if (existing.length >= MAX_STICKERS) {
+        existing[0].remove();
+      }
+
       var name = btn.dataset.sticker;
       var img = document.createElement('img');
       img.src = '/assets/img/stickers/' + name + '.webp';
@@ -143,8 +240,16 @@ window.initPortrait = function () {
       frame.classList.add('hero__frame--slap');
       playSlap();
       setFavicon(img.src);
-      // Wait one frame so the sticker has layout before reading its rect
-      requestAnimationFrame(function () { spawnBurst(img); });
+
+      // Screen shake at threshold
+      if (rapidClicks >= SHAKE_THRESHOLD) {
+        screenShake();
+      }
+
+      // Skip particles during very rapid clicking to reduce DOM pressure
+      if (rapidClicks < SHAKE_THRESHOLD) {
+        requestAnimationFrame(function () { spawnBurst(img); });
+      }
       window.psTrack('Portrait_Sticker_' + name);
     });
   });
