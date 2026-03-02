@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║                                                          ║
+  ║   Well well well... viewing source, are we?              ║
+  ║                                                          ║
+  ║   You're the kind of person I like.                      ║
+  ║                                                          ║
+  ║   This site was designed & directed by Inti Valderas      ║
+  ║   and built by his best buddy Claude Code.               ║
+  ║                                                          ║
+  ║   Zero dependencies. Zero build steps. Just vibes.       ║
+  ║                                                          ║
+  ║   Curious how it all works? Come say hi:                 ║
+  ║   https://github.com/intivalderas/intivalderas.github.io ║
+  ║                                                          ║
+  ║   (Try triple-clicking the logo. You're welcome.)        ║
+  ║                                                          ║
+  ╚══════════════════════════════════════════════════════════╝
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,25 +35,20 @@
   <!-- Skip to content -->
   <a href="#about" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav" aria-label="Main navigation">
-    <a href="index.html" class="nav__logo">Inti Valderas Caro</a>
-    <div class="nav__links">
-      <a href="#about" class="nav__link" data-label="Get to know me">About</a>
-      <a href="#contact" class="nav__link" data-label="Let's talk">Contact</a>
-      <button class="nav__link nav__link--btn" data-label="View CV" id="resumeToggle" type="button">Resume</button>
-    </div>
-    <button class="nav__menu" id="navMenu" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <button class="sidebar__toggle" id="sidebarToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span>
     </button>
-  </nav>
-
-  <!-- Mobile menu -->
-  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-    <a href="#about" class="mobile-nav__link">About</a>
-    <a href="#contact" class="mobile-nav__link">Contact</a>
-    <button class="mobile-nav__link mobile-nav__link--btn" id="resumeToggleMobile" type="button">Resume</button>
-  </nav>
+    <nav class="sidebar__content">
+      <a href="index.html" class="sidebar__logo">Inti Valderas Caro</a>
+      <div class="sidebar__links">
+        <a href="#about" class="sidebar__link">About</a>
+        <a href="#contact" class="sidebar__link">Contact</a>
+        <button class="sidebar__link sidebar__link--btn" id="resumeToggle" type="button">Resume</button>
+      </div>
+    </nav>
+  </aside>
 
   <!-- Hero -->
   <header class="hero">
@@ -46,13 +60,14 @@
       </h1>
       <p class="hero__subtitle">
         UX Design consultant at <strong>iO</strong>, currently shaping digital experiences
-        at <strong>VRT MAX</strong> — at the intersection of interaction design, data, and AI.
+        at <strong>VRT MAX</strong> — I thrive at the intersection of interaction design, data, and AI.
       </p>
       <div class="hero__tags">
         <span class="tag">Interaction Design</span>
         <span class="tag">UX Research</span>
         <span class="tag">Conversational AI</span>
         <span class="tag">Data-Driven Design</span>
+        <span class="tag">Process Automation</span>
       </div>
       <a href="#about" class="hero__cta magnetic-btn">
         <span>About me</span>
@@ -84,6 +99,8 @@
         <span>User Testing</span><span class="marquee__dot">·</span>
         <span>Open Source</span><span class="marquee__dot">·</span>
         <span>Machine Learning</span><span class="marquee__dot">·</span>
+        <span>Process Automation</span><span class="marquee__dot">·</span>
+        <span>Zoho One</span><span class="marquee__dot">·</span>
         <span>Strategy</span><span class="marquee__dot">·</span>
       </div>
       <div class="marquee__content" aria-hidden="true">
@@ -98,6 +115,8 @@
         <span>User Testing</span><span class="marquee__dot">·</span>
         <span>Open Source</span><span class="marquee__dot">·</span>
         <span>Machine Learning</span><span class="marquee__dot">·</span>
+        <span>Process Automation</span><span class="marquee__dot">·</span>
+        <span>Zoho One</span><span class="marquee__dot">·</span>
         <span>Strategy</span><span class="marquee__dot">·</span>
       </div>
     </div>
@@ -122,12 +141,13 @@
           civic tech projects.
         </p>
         <p>
-          Through <strong>Valderas</strong>, I consult on interactive strategy and design,
-          having worked with organisations like KBC, <strong>Smooth Sailing</strong>, Engie, and LUCA School of Arts.
+          Through <strong>Valderas</strong>, I consult on interactive strategy, design, and operational tooling —
+          from setting up <strong>Zoho One</strong> for <strong>Nitra</strong> to marketing automations and CRM data workflows.
+          I've also worked with organisations like KBC, <strong>Smooth Sailing</strong>, Engie, and LUCA School of Arts.
         </p>
         <p>
           I'm particularly fascinated by the intersection of interaction design, machine learning,
-          and artificial intelligence — always looking for ways to make complex systems feel simple
+          and artificial intelligence — a topic I've also explored in a <a href="https://youtu.be/mpPM_u8sM_w" target="_blank" rel="noopener noreferrer">talk at UX Beers</a> — always looking for ways to make complex systems feel simple
           and human.
         </p>
       </div>
@@ -136,6 +156,7 @@
           <div class="label">Experience</div>
           <ul class="about__list">
             <li>UX Designer — VRT MAX (via iO)</li>
+            <li>Zoho One Consultant — Nitra (via Valderas)</li>
             <li>Digital & Design Strategist — Valderas</li>
             <li>Coordinator — Open Summer of Code</li>
             <li>Board Member — Open Knowledge Belgium</li>
@@ -155,6 +176,8 @@
             <span class="tag">Conversational AI</span>
             <span class="tag">Data Visualization</span>
             <span class="tag">Design Strategy</span>
+            <span class="tag">Process Automation</span>
+            <span class="tag">Zoho One</span>
             <span class="tag">Open Source</span>
           </div>
         </div>
@@ -163,6 +186,89 @@
   </section>
 
   <!-- Blog (hidden until content is ready — see dev branch) -->
+
+  <!-- Kind Words -->
+  <section class="section section--kind-words" id="kind-words">
+    <div class="section__header">
+      <div class="label">Kind Words</div>
+      <h2 class="section__title reveal">Don't just take my word for it</h2>
+      <p class="section__subtitle reveal">Here's what happens when you let other people write your bio.</p>
+    </div>
+    <div class="kind-words__grid">
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/valeriecz" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/valerie-czaplewski.jpg" alt="Valerie Czaplewski" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"I really enjoyed working with Inti. He is a strong UX designer with great expertise, who always starts from the user's perspective. Inti isn't afraid to be critical, asks the right questions, and consistently gives constructive feedback. What stands out most is his calm, positive attitude. He communicates clearly, takes the time to explain things well, and is always ready to help. An absolute asset to any team."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/valeriecz" target="_blank" rel="noopener noreferrer">Valerie Czaplewski</a></cite>
+            <div class="kind-words__role">Freelance Conversational UX Designer</div>
+          </footer>
+        </div>
+      </blockquote>
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/yasinyer" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/yasin-yer.jpg" alt="Yasin Yer" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"Inti is self-critical designer with an eye for detail and design. Someone who is enormously flexible in adapting to new technologies and software. No question or problem remains unsolved in his hands. Thanks to his support and guidance I became the designer I am today."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/yasinyer" target="_blank" rel="noopener noreferrer">Yasin Yer</a></cite>
+            <div class="kind-words__role">Freelance User Interface Designer</div>
+          </footer>
+        </div>
+      </blockquote>
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/jennifersnow" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/jennifer-snow.jpg" alt="Jennifer Snow" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"I first met Inti when he was working for us through OSOC (Open Summer of Code 2019) and later as an intern at Engie under my supervision. Inti thrives as a creative innovative mind, he loves a challenge and brings new out-of-the-box ideas to the table. I never worry when Inti is on the team, because I know he is dedicated and sees the projects through with a good dose of positive, helping and team-work attitude."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/jennifersnow" target="_blank" rel="noopener noreferrer">Jennifer Snow</a></cite>
+            <div class="kind-words__role">UX Designer & Functional Analyst, ENGIE Electrabel</div>
+          </footer>
+        </div>
+      </blockquote>
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/simonvandamme" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/simon-van-damme.jpg" alt="Simon Van Damme" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"At LUCA School of Arts, Inti represented 3,500 students on our board of directors for two years. Together with a few other students, he managed to develop an even better participation model for students during the height of the COVID period. We are grateful to him for this impressive achievement and the wonderful collaboration."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/simonvandamme" target="_blank" rel="noopener noreferrer">Simon Van Damme</a></cite>
+            <div class="kind-words__role">Board Member in Education and Culture</div>
+          </footer>
+        </div>
+      </blockquote>
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/bolat-tleubayev" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/bolat-tleubayev.jpg" alt="Bolat Tleubayev" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"I was working with Inti for about a month at Open Summer of Code. During that whole period Inti was overseeing our team of students as a coach. His input to the team effort was great both for morale and KPI achievement. He was able to motivate, direct, and coach every team member efficiently."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/bolat-tleubayev" target="_blank" rel="noopener noreferrer">Bolat Tleubayev</a></cite>
+            <div class="kind-words__role">Senior Azure Data Engineer @ EPAM</div>
+          </footer>
+        </div>
+      </blockquote>
+      <blockquote class="kind-words__card reveal">
+        <a href="https://www.linkedin.com/in/kris-wauters-4a747087" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/recommendations/kris-wauters.jpg" alt="Kris Wauters" class="kind-words__photo" loading="lazy">
+        </a>
+        <div class="kind-words__content">
+          <p class="kind-words__text">"A wonderful collaboration that grew from a purely informal introduction. The most important thing about Inti Valderas is that you can always count on him as an enthusiastic entrepreneur, brimming with innovative ideas. I can highly recommend Inti."</p>
+          <footer class="kind-words__footer">
+            <cite class="kind-words__author"><a href="https://www.linkedin.com/in/kris-wauters-4a747087" target="_blank" rel="noopener noreferrer">Kris Wauters</a></cite>
+            <div class="kind-words__role">CEO NITRA ~ NITRA Academy</div>
+          </footer>
+        </div>
+      </blockquote>
+    </div>
+  </section>
 
   <!-- Contact -->
   <section class="section section--contact" id="contact">
@@ -183,8 +289,6 @@
       </a>
       <div class="contact__links">
         <a href="https://linkedin.com/in/inti-valderas-caro" class="contact__link magnetic-btn" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
-        <a href="https://valderas.medium.com" class="contact__link magnetic-btn" target="_blank" rel="noopener noreferrer">Medium<span class="sr-only"> (opens in new tab)</span></a>
-        <a href="https://dribbble.com/Valderas" class="contact__link magnetic-btn" target="_blank" rel="noopener noreferrer">Dribbble<span class="sr-only"> (opens in new tab)</span></a>
         <a href="https://github.com/intivalderas" class="contact__link magnetic-btn" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in new tab)</span></a>
       </div>
     </div>
@@ -210,8 +314,10 @@
 
     <div class="resume__document">
       <header class="resume__header">
-        <h1 class="resume__name">Inti Valderas Caro</h1>
-        <p class="resume__title">UX & Interaction Designer</p>
+        <div class="resume__header-main">
+          <h1 class="resume__name">Inti Valderas Caro</h1>
+          <p class="resume__title">UX & Interaction Designer</p>
+        </div>
         <div class="resume__contact">
           <span>inti@valderas.be</span>
           <span class="resume__sep" aria-hidden="true">/</span>
@@ -262,59 +368,17 @@
             </div>
           </div>
           <div class="resume__entry">
-            <div class="resume__period">Aug 2020 — Sep 2021</div>
+            <div class="resume__period">Aug 2020 — Nov 2022</div>
             <div class="resume__details">
-              <div class="resume__role">UX Designer</div>
-              <div class="resume__company">Smooth Sailing · Freelance</div>
+              <div class="resume__role">UX Designer / Researcher</div>
+              <div class="resume__company">Smooth Sailing · Full-time & Freelance</div>
             </div>
           </div>
           <div class="resume__entry">
-            <div class="resume__period">Jul 2021 — Jun 2022</div>
+            <div class="resume__period">Jul 2019 — Jun 2022</div>
             <div class="resume__details">
-              <div class="resume__role">Design Coach</div>
-              <div class="resume__company">Open Summer of Code · Freelance</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">Jul 2020 — Jun 2021</div>
-            <div class="resume__details">
-              <div class="resume__role">IxD & Student Coach</div>
-              <div class="resume__company">Open Summer of Code · Contract</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">Jul 2019 — Jun 2020</div>
-            <div class="resume__details">
-              <div class="resume__role">Interaction Designer (Student)</div>
-              <div class="resume__company">Open Summer of Code · Contract</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">May 2019 — Jun 2021</div>
-            <div class="resume__details">
-              <div class="resume__role">Board of Directors</div>
-              <div class="resume__company">LUCA School of Arts</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">Oct 2018 — Jun 2021</div>
-            <div class="resume__details">
-              <div class="resume__role">Chairman Participation Committee</div>
-              <div class="resume__company">LUCA School of Arts</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">Mar 2020 — May 2020</div>
-            <div class="resume__details">
-              <div class="resume__role">Interaction Design Intern</div>
-              <div class="resume__company">ENGIE Belgium · Internship</div>
-            </div>
-          </div>
-          <div class="resume__entry">
-            <div class="resume__period">Sep 2015 — Jun 2016</div>
-            <div class="resume__details">
-              <div class="resume__role">Accounting Intern</div>
-              <div class="resume__company">QinetiQ · Internship</div>
+              <div class="resume__role">Design Coach & IxD Lead</div>
+              <div class="resume__company">Open Summer of Code</div>
             </div>
           </div>
         </div>
@@ -349,83 +413,6 @@
         </div>
       </div>
 
-      <div class="resume__section">
-        <h2 class="resume__section-title">Recommendations</h2>
-        <div class="resume__recommendations">
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/valeriecz" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/valerie-czaplewski.jpg" alt="Valerie Czaplewski" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"I really enjoyed working with Inti. He is a strong UX designer with great expertise, who always starts from the user's perspective. Inti isn't afraid to be critical, asks the right questions, and consistently gives constructive feedback. What stands out most is his calm, positive attitude. He communicates clearly, takes the time to explain things well, and is always ready to help. An absolute asset to any team."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/valeriecz" target="_blank" rel="noopener noreferrer">Valerie Czaplewski</a></cite>
-                <div class="resume__rec-role">Freelance Conversational UX Designer</div>
-              </footer>
-            </div>
-          </blockquote>
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/yasinyer" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/yasin-yer.jpg" alt="Yasin Yer" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"Inti is self-critical designer with an eye for detail and design. Someone who is enormously flexible in adapting to new technologies and software. No question or problem remains unsolved in his hands. Thanks to his support and guidance I became the designer I am today."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/yasinyer" target="_blank" rel="noopener noreferrer">Yasin Yer</a></cite>
-                <div class="resume__rec-role">Freelance User Interface Designer</div>
-              </footer>
-            </div>
-          </blockquote>
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/jennifersnow" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/jennifer-snow.jpg" alt="Jennifer Snow" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"I first met Inti when he was working for us through OSOC (Open Summer of Code 2019) and later as an intern at Engie under my supervision. Inti thrives as a creative innovative mind, he loves a challenge and brings new out-of-the-box ideas to the table. I never worry when Inti is on the team, because I know he is dedicated and sees the projects through with a good dose of positive, helping and team-work attitude."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/jennifersnow" target="_blank" rel="noopener noreferrer">Jennifer Snow</a></cite>
-                <div class="resume__rec-role">UX Designer & Functional Analyst, ENGIE Electrabel</div>
-              </footer>
-            </div>
-          </blockquote>
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/simonvandamme" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/simon-van-damme.jpg" alt="Simon Van Damme" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"At LUCA School of Arts, Inti represented 3,500 students on our board of directors for two years. Together with a few other students, he managed to develop an even better participation model for students during the height of the COVID period. We are grateful to him for this impressive achievement and the wonderful collaboration."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/simonvandamme" target="_blank" rel="noopener noreferrer">Simon Van Damme</a></cite>
-                <div class="resume__rec-role">Board Member in Education and Culture</div>
-              </footer>
-            </div>
-          </blockquote>
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/bolat-tleubayev" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/bolat-tleubayev.jpg" alt="Bolat Tleubayev" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"I was working with Inti for about a month at Open Summer of Code. During that whole period Inti was overseeing our team of students as a coach. His input to the team effort was great both for morale and KPI achievement. He was able to motivate, direct, and coach every team member efficiently."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/bolat-tleubayev" target="_blank" rel="noopener noreferrer">Bolat Tleubayev</a></cite>
-                <div class="resume__rec-role">Senior Azure Data Engineer @ EPAM</div>
-              </footer>
-            </div>
-          </blockquote>
-          <blockquote class="resume__recommendation">
-            <a href="https://www.linkedin.com/in/kris-wauters-4a747087" target="_blank" rel="noopener noreferrer">
-              <img src="assets/img/recommendations/kris-wauters.jpg" alt="Kris Wauters" class="resume__rec-photo" loading="lazy">
-            </a>
-            <div class="resume__rec-content">
-              <p class="resume__rec-text">"A wonderful collaboration that grew from a purely informal introduction. The most important thing about Inti Valderas is that you can always count on him as an enthusiastic entrepreneur, brimming with innovative ideas. I can highly recommend Inti."</p>
-              <footer class="resume__rec-footer">
-                <cite class="resume__rec-author"><a href="https://www.linkedin.com/in/kris-wauters-4a747087" target="_blank" rel="noopener noreferrer">Kris Wauters</a></cite>
-                <div class="resume__rec-role">CEO NITRA ~ NITRA Academy</div>
-              </footer>
-            </div>
-          </blockquote>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -433,6 +420,67 @@
   <footer class="footer">
     <p>© 2026 Inti Valderas Caro</p>
   </footer>
+
+  <!-- Settings Panel -->
+  <div class="settings" id="settingsPanel">
+    <button class="settings__toggle" id="settingsToggle" type="button" aria-label="Settings" aria-expanded="false" aria-controls="settingsMenu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </button>
+    <div class="settings__menu" id="settingsMenu">
+      <div class="settings__group">
+        <span class="settings__group-label">Theme</span>
+        <div class="settings__item">
+          <label class="settings__label" for="settingDarkMode">Dark mode</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingDarkMode">
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="settings__separator"></div>
+      <div class="settings__group">
+        <span class="settings__group-label">Effects</span>
+        <div class="settings__item">
+          <label class="settings__label" for="settingParticles">Particles</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingParticles" checked>
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+        <div class="settings__item">
+          <label class="settings__label" for="settingMotion">Motion effects</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingMotion" checked>
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+        <div class="settings__item" id="settingCursorRow">
+          <label class="settings__label" for="settingCursor">Custom cursor</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingCursor" checked>
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+        <div class="settings__item" id="settingGyroRow">
+          <label class="settings__label" for="settingGyroscope">Gyroscope</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingGyroscope">
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+        <div class="settings__separator"></div>
+        <div class="settings__item">
+          <label class="settings__label" for="settingDisableAll">Disable all</label>
+          <label class="settings__switch">
+            <input type="checkbox" id="settingDisableAll">
+            <span class="settings__slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Sticker Board -->
   <div class="sticker-tray" id="stickerTray">
@@ -459,12 +507,14 @@
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
 
+  <script src="assets/js/gyroscope.js"></script>
   <script src="assets/js/cursor.js"></script>
   <script src="assets/js/text-effects.js"></script>
   <script src="assets/js/cards.js"></script>
   <script src="assets/js/stickers.js"></script>
   <script src="assets/js/ui.js"></script>
   <script src="assets/js/easter-eggs.js"></script>
+  <script src="assets/js/settings.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

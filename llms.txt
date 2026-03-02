@@ -1,0 +1,39 @@
+# valderas.be
+
+> Personal site of Inti Valderas Caro — UX & Interaction Designer based in Belgium.
+
+## About Inti
+
+Inti Valderas Caro is a UX & Interaction Designer based in Sint-Niklaas, Belgium.
+He holds a Master's degree in Interaction Design from LUCA School of Arts and currently
+designs digital experiences at VRT MAX (Flanders' public broadcaster) as a UX Design
+consultant via iO.
+
+He also serves as a board member at Open Knowledge Belgium and coordinates the
+Open Summer of Code — connecting students with open-source civic tech projects.
+
+Through Valderas, he consults on interactive strategy and design, having worked with
+organisations like KBC, Smooth Sailing, Engie, and LUCA School of Arts.
+
+## Focus areas
+
+- UX Design & Interaction Design
+- Conversational AI
+- Data Visualization
+- Design Strategy & UX Research
+- Design Systems
+- Open Source
+
+## Links
+
+- Website: https://valderas.be
+- Email: inti@valderas.be
+- LinkedIn: https://linkedin.com/in/inti-valderas-caro
+- GitHub: https://github.com/intivalderas
+
+## About this site
+
+This site is a zero-dependency static site built with vanilla HTML, CSS, and JavaScript.
+No frameworks, no build steps. Designed and directed by Inti, built by Claude Code.
+
+Source code: https://github.com/intivalderas/intivalderas.github.io
