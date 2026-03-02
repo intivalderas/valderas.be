@@ -12,10 +12,14 @@
   <div class="sidebar__overlay" id="sidebarOverlay"></div>
 
   <!-- Main Content -->
+  <div class="scroll-fade-top" aria-hidden="true"></div>
+  <div class="scroll-fade-bottom" aria-hidden="true"></div>
+
   <main class="main-content" id="mainContent">
   {{ content | safe }}
   </main><!-- /.main-content -->
 
+  <div class="noise-overlay" aria-hidden="true"></div>
   {% include "cursor.njk" %}
   {% include "consent-banner.njk" %}
   {% include "scripts.njk" %}

@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   run(window.initTextScramble);
   run(window.initWordRotate);
 
+  // Hero entrance
+  run(window.initHeroTimeline);
+
   // UI (always)
   run(window.initNav);
   run(window.initSmoothScroll);
@@ -53,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   run(window.initKindWordsGradient);
   run(window.initKindWordsVibes);
   run(window.initParallax);
+  run(window.initDepthParallax);
 
   // Interactive features
   run(window.initPortrait);

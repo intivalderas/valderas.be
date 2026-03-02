@@ -3,6 +3,39 @@
    Magnetic Buttons, Tags, Parallax
    ========================================= */
 
+function prefersReducedMotion() {
+  return document.body.classList.contains('reduced-effects') ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+window.initHeroTimeline = function () {
+  var els = document.querySelectorAll('.hero__anim');
+  if (!els.length) return;
+
+  // Clear the CSS hidden state so GSAP .from() animates toward opacity:1
+  els.forEach(function (el) {
+    el.style.visibility = 'visible';
+    el.style.opacity = '1';
+  });
+
+  // Skip animation if reduced effects
+  if (prefersReducedMotion()) {
+    gsap.set(els, { opacity: 1, y: 0 });
+    return;
+  }
+
+  var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.from('.hero__label', { y: 10, opacity: 0, duration: 0.6 })
+    .from('.hero__name', { y: 15, opacity: 0, duration: 0.7 }, '-=0.4')
+    .from('.hero__title', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
+    .from('.hero__subtitle', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
+    .from('.hero__tags', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
+    .from('.hero__cta', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3')
+    .from('.hero__portrait', { y: 30, opacity: 0, duration: 0.8 }, '-=0.5')
+    .from('.hero__scroll', { opacity: 0, duration: 1 }, '-=0.3');
+};
+
+
 window.initNav = function () {
   const scrollIndicator = document.getElementById('scrollIndicator');
 
@@ -71,73 +104,173 @@ window.initSmoothScroll = function () {
 
 
 window.initScrollReveal = function () {
-  const elements = document.querySelectorAll('.reveal');
+  var elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('reveal--visible');
-        }, index * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -60px 0px'
+  // If reduced effects, just show everything immediately
+  if (prefersReducedMotion()) {
+    gsap.set(elements, { opacity: 1, y: 0 });
+    return;
+  }
+
+  // Hide reveal elements until they enter viewport
+  var revealEls = document.querySelectorAll('.reveal:not(.reveal--clip)');
+  gsap.set(revealEls, { opacity: 0, y: 30 });
+
+  ScrollTrigger.batch(revealEls, {
+    onEnter: function (batch) {
+      gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out',
+        clearProps: 'all'
+      });
+    },
+    start: 'top 90%',
+    once: true
   });
 
-  elements.forEach(el => observer.observe(el));
+  // Clip-path reveal variant
+  var clipEls = document.querySelectorAll('.reveal--clip');
+  clipEls.forEach(function (el) {
+    gsap.fromTo(el,
+      { clipPath: 'inset(0 100% 0 0)' },
+      {
+        clipPath: 'inset(0 0% 0 0)',
+        duration: 1,
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true
+        }
+      }
+    );
+  });
 };
 
 
 window.initMagneticButtons = function () {
-  document.querySelectorAll('.magnetic-btn').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = 'translate(' + (x * 0.2) + 'px, ' + (y * 0.2) + 'px)';
+  document.querySelectorAll('.magnetic-btn').forEach(function (btn) {
+    var xTo = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power3.out' });
+    var yTo = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power3.out' });
+
+    btn.addEventListener('mousemove', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var dx = e.clientX - rect.left - rect.width / 2;
+      var dy = e.clientY - rect.top - rect.height / 2;
+      xTo(dx * 0.2);
+      yTo(dy * 0.2);
     });
 
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translate(0, 0)';
+    btn.addEventListener('mouseleave', function () {
+      xTo(0);
+      yTo(0);
     });
   });
 };
 
 
 window.initParallax = function () {
-  const heroTitle = document.querySelector('.hero__title');
-  if (!heroTitle) return;
+  if (!document.querySelector('.hero')) return;
+  if (prefersReducedMotion()) return;
 
-  const heroSubtitle = document.querySelector('.hero__subtitle');
-  const heroTags = document.querySelector('.hero__tags');
+  // Two hero columns shift at different rates — content vs portrait
+  var heroContent = document.querySelector('.hero__content');
+  var heroPortrait = document.querySelector('.hero__portrait');
+  var heroTrigger = {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true
+  };
 
-  // Scroll-based parallax (desktop + mobile)
-  window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    if (scroll < window.innerHeight) {
-      heroTitle.style.transform = 'translateY(' + (scroll * 0.08) + 'px)';
-      heroTitle.style.opacity = 1 - (scroll / (window.innerHeight * 0.8));
-    }
-  });
+  if (heroContent) {
+    gsap.to(heroContent, {
+      y: function () { return window.innerHeight * 0.06; },
+      ease: 'none',
+      scrollTrigger: heroTrigger
+    });
+  }
+
+  if (heroPortrait) {
+    gsap.to(heroPortrait, {
+      y: function () { return window.innerHeight * 0.1; },
+      ease: 'none',
+      scrollTrigger: Object.assign({}, heroTrigger)
+    });
+  }
 
   // Gyroscope-based tilt shift (mobile)
-  if (window.Gyroscope) {
+  var heroTitle = document.querySelector('.hero__title');
+  var heroSubtitle = document.querySelector('.hero__subtitle');
+  var heroTags = document.querySelector('.hero__tags');
+
+  if (window.Gyroscope && heroTitle) {
     Gyroscope.on(function (gx, gy) {
       if (window.scrollY > window.innerHeight * 0.5) return;
-      var offsetX = (gx - 0.5) * 20; // max ~10px each direction
+      var offsetX = (gx - 0.5) * 20;
       var offsetY = (gy - 0.5) * 10;
-      heroTitle.style.transform = 'translateY(' + (window.scrollY * 0.08 + offsetY) + 'px) translateX(' + offsetX + 'px)';
+      gsap.set(heroTitle, { x: offsetX });
       if (heroSubtitle) {
-        heroSubtitle.style.transform = 'translateX(' + (offsetX * 0.6) + 'px) translateY(' + (offsetY * 0.6) + 'px)';
+        gsap.set(heroSubtitle, { x: offsetX * 0.6, y: offsetY * 0.6 });
       }
       if (heroTags) {
-        heroTags.style.transform = 'translateX(' + (offsetX * 0.4) + 'px) translateY(' + (offsetY * 0.4) + 'px)';
+        gsap.set(heroTags, { x: offsetX * 0.4, y: offsetY * 0.4 });
       }
     });
   }
+};
+
+
+window.initDepthParallax = function () {
+  if (prefersReducedMotion()) return;
+
+  var layers = [
+    // Marquee — lags, feels like a strip in the distance
+    { sel: '.marquee',        speed: -8 },
+
+    // Work
+    { sel: '.section--work .section__title', speed: 12 },
+    { sel: '.work-card', speed: 5, stagger: 3 },
+
+    // About
+    { sel: '.section--about .section__title', speed: 12 },
+    { sel: '.about__text',    speed: -5 },
+    { sel: '.about__details', speed: 8 },
+
+    // Kind Words
+    { sel: '.section--kind-words .section__title', speed: 10 },
+
+    // Contact
+    { sel: '.section--contact .section__title', speed: 12 },
+    { sel: '.contact__email',  speed: 15 },
+    { sel: '.contact__links',  speed: -8 }
+  ];
+
+  layers.forEach(function (layer) {
+    var els = document.querySelectorAll(layer.sel);
+    els.forEach(function (el, i) {
+      // Use the closest section as trigger so the transform doesn't
+      // shift the trigger itself, which causes jumps on direction change
+      var section = el.closest('section, .hero, .marquee') || el.parentElement;
+      gsap.fromTo(el,
+        { y: -(layer.speed + (layer.stagger ? i * layer.stagger : 0)) / 2 },
+        {
+          y: (layer.speed + (layer.stagger ? i * layer.stagger : 0)) / 2,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5
+          }
+        }
+      );
+    });
+  });
 };
 
 
