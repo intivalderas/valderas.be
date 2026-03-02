@@ -106,3 +106,29 @@ window.initTextScramble = function () {
 
   targets.forEach(el => observer.observe(el));
 };
+
+
+window.initWordRotate = function () {
+  var el = document.getElementById('heroRotate');
+  if (!el) return;
+
+  var words = el.dataset.words.split(',');
+  var index = 0;
+  var scramble = new window.TextScramble(el);
+  var reduced = document.body.classList.contains('reduced-effects');
+
+  function next() {
+    index = (index + 1) % words.length;
+    if (reduced) {
+      el.textContent = words[index];
+      setTimeout(next, 2500);
+    } else {
+      scramble.setText(words[index]).then(function () {
+        setTimeout(next, 2500);
+      });
+    }
+  }
+
+  // Start cycling after the initial letter animation settles
+  setTimeout(next, 3000);
+};

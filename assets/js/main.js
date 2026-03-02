@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Text effects (always)
   run(window.initLetterAnimation);
   run(window.initTextScramble);
+  run(window.initWordRotate);
 
   // UI (always)
   run(window.initNav);
