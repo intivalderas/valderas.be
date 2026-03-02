@@ -6,7 +6,7 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
 
 <!-- Hero -->
 <header class="hero">
-  <div class="hero__portrait" id="heroPortrait">
+  <div class="hero__portrait hero__anim" id="heroPortrait">
     <div class="hero__frame">
       <img src="/assets/img/inti-portrait.webp" alt="Inti Valderas Caro" class="hero__photo">
       <div class="hero__glare"></div>
@@ -26,38 +26,38 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
         <button class="hero__sticker-btn" data-sticker="inti-shocked" data-tooltip="Shocked" aria-label="Shocked face">
           <img src="/assets/img/stickers/inti-shocked.webp" alt="">
         </button>
-        <button class="hero__sticker-clear" id="heroStickerClear" aria-label="Clear stickers">&times;</button>
+        <button class="hero__sticker-clear" id="heroStickerClear" aria-label="Clear stickers">&#x21BB;</button>
       </div>
     </div>
     <p class="hero__caption">AI-enhanced selfie. I wish I looked this serious in real life. The stickers are also AI — obviously.</p>
   </div>
   <div class="hero__content">
-    <div class="hero__label label">UX & Interaction Designer</div>
-    <p class="hero__name">Inti Valderas Caro</p>
-    <h1 class="hero__title" data-scramble>
+    <div class="hero__label hero__anim label">UX & Interaction Designer</div>
+    <p class="hero__name hero__anim">Inti Valderas Caro</p>
+    <h1 class="hero__title hero__anim" data-scramble>
       <span class="split-text" data-text="Designs that">Designs that</span><br>
       <span class="split-text hero__rotate" id="heroRotate" data-words="slap,click,land,stick,work,last,flow,ship,scale" data-text="slap">slap</span>
     </h1>
-    <p class="hero__subtitle">
+    <p class="hero__subtitle hero__anim">
       Currently one of the designers working on <strong>VRT MAX</strong>, Belgium's most-watched
       streaming platform. I also teach AI to have better conversations — and occasionally
       build websites that slap. Literally.
     </p>
-    <div class="hero__tags">
+    <div class="hero__tags hero__anim">
       <span class="tag">Interaction Design</span>
       <span class="tag">UX Research</span>
       <span class="tag">Conversational AI</span>
       <span class="tag">Data-Driven Design</span>
       <span class="tag">Process Automation</span>
     </div>
-    <a href="#about" class="hero__cta magnetic-btn">
+    <a href="#about" class="hero__cta hero__anim magnetic-btn">
       <span>More about me</span>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M7 17L17 7M17 7H7M17 7V17"/>
       </svg>
     </a>
   </div>
-  <div class="hero__scroll" id="scrollIndicator">
+  <div class="hero__scroll hero__anim" id="scrollIndicator">
     <span>Scroll</span>
     <div class="hero__scroll-line"></div>
   </div>
@@ -105,8 +105,7 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
 <section class="section section--work" id="work">
   <div class="section__header">
     <div class="label">Work</div>
-    <h2 class="section__title reveal">Things I've shipped</h2>
-    <p class="section__subtitle reveal">The kind of work that keeps me up at night — in a good way.</p>
+    <h2 class="section__title reveal">What I've been working on</h2>
   </div>
   <div class="work-grid">
     <a href="/portfolio/mijn-lijst-vrt-max/" class="work-card reveal">
@@ -115,8 +114,8 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
         <span class="tag">Data Analysis</span>
         <span class="tag">Streaming</span>
       </div>
-      <h3 class="work-card__title">A Bookshelf That Outgrew Itself</h3>
-      <p class="work-card__desc">1,115 viewers told us exactly what's wrong with their watch list. We listened. The roadmap for VRT MAX's most-used feature was never the same.</p>
+      <h3 class="work-card__title">My List (that everyone uses differently)</h3>
+      <p class="work-card__desc">1,115 viewers, one survey, and a complete rethink of the platform's most-used feature.</p>
       <span class="work-card__link">Read case study &rarr;</span>
     </a>
     <a href="/portfolio/kate-kbc/" class="work-card reveal">
@@ -125,8 +124,8 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
         <span class="tag">UX Design</span>
         <span class="tag">LLM Integration</span>
       </div>
-      <h3 class="work-card__title">From Scripts to Thinking</h3>
-      <p class="work-card__desc">What happens when you sneak an LLM into a rule-based chatbot used by millions? 186 conversations, a world's best banking app award, and zero users noticing the seam.</p>
+      <h3 class="work-card__title">Kate (the chatbot that grew a brain)</h3>
+      <p class="work-card__desc">I designed 186 conversations and was the first to bring LLM into a rule-based chatbot used by millions. Nobody noticed the seam.</p>
       <span class="work-card__link">Read case study &rarr;</span>
     </a>
     <a href="/portfolio/nitra-academy/" class="work-card reveal">
@@ -135,8 +134,8 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
         <span class="tag">Zoho Creator</span>
         <span class="tag">MVP</span>
       </div>
-      <h3 class="work-card__title">Spreadsheets Out, System In</h3>
-      <p class="work-card__desc">A recognized exam center drowning in manual admin. I built a full training management MVP in Zoho Creator — bookings, certificates, portals — and it's been in daily use since.</p>
+      <h3 class="work-card__title">Nitra Academy (bye-bye spreadsheets)</h3>
+      <p class="work-card__desc">An exam center running on spreadsheets needed a real system. I built the MVP in Zoho Creator — it's been in daily use since.</p>
       <span class="work-card__link">Read case study &rarr;</span>
     </a>
   </div>
@@ -149,7 +148,7 @@ description: "UX & Interaction Designer crafting thoughtful digital experiences 
     <h2 class="section__title reveal">A bit about me</h2>
   </div>
   <div class="about-grid">
-    <div class="about__text reveal">
+    <div class="about__text reveal reveal--clip">
       <p>
         I get excited about the moment something complicated suddenly clicks — when a confusing flow
         becomes obvious, or when an AI response actually sounds like it's listening.

@@ -8,24 +8,22 @@ window.initCursor = function () {
 
   if (!cursor || !follower) return;
 
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
+  var followerXTo = gsap.quickTo(follower, 'left', { duration: 0.5, ease: 'power3.out' });
+  var followerYTo = gsap.quickTo(follower, 'top', { duration: 0.5, ease: 'power3.out' });
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
+  // Spotlight element
+  var spotlight = document.createElement('div');
+  spotlight.className = 'cursor-spotlight';
+  spotlight.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(spotlight);
+
+  document.addEventListener('mousemove', function (e) {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    followerXTo(e.clientX);
+    followerYTo(e.clientY);
+    spotlight.style.background = 'radial-gradient(600px circle at ' + e.clientX + 'px ' + e.clientY + 'px, rgba(0,0,0,0.02), transparent)';
   });
-
-  function animateFollower() {
-    followerX += (mouseX - followerX) * 0.12;
-    followerY += (mouseY - followerY) * 0.12;
-    follower.style.left = followerX + 'px';
-    follower.style.top = followerY + 'px';
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
 
   const hoverTargets = document.querySelectorAll('a, button, .tag, .magnetic-btn, .sticker-tray__item, .sticker-tray__toggle, .sticker-tray__clear');
   hoverTargets.forEach(el => {

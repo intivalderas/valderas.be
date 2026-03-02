@@ -23,17 +23,9 @@
   margin-top: 1rem;
 }
 
-/* --- Reveal animation --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s var(--ease-out-expo),
-              transform 0.8s var(--ease-out-expo);
-}
-
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
+/* --- Reveal animation (GSAP-driven) --- */
+.reveal--clip {
+  clip-path: inset(0);
 }
 
 /* --- Portfolio Grid --- */

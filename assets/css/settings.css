@@ -148,16 +148,13 @@
 
 /* --- Reduced effects mode --- */
 body.reduced-effects .reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
 }
 
 body.reduced-effects .magnetic-btn {
   transition: none;
-}
-
-body.reduced-effects .magnetic-btn:hover {
   transform: none !important;
 }
 
@@ -189,19 +186,21 @@ body.reduced-effects .kind-words__track {
   animation: none;
 }
 
-body.reduced-effects .hero__label,
-body.reduced-effects .hero__name,
-body.reduced-effects .hero__title,
-body.reduced-effects .hero__subtitle,
-body.reduced-effects .hero__tags,
-body.reduced-effects .hero__cta,
-body.reduced-effects .hero__portrait {
-  animation: none;
-  opacity: 1;
-  transform: none;
+body.reduced-effects .hero__anim {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
 
 body.reduced-effects .hero__glare {
+  display: none;
+}
+
+body.reduced-effects .cursor-spotlight {
+  display: none;
+}
+
+body.reduced-effects .sidebar__link::after {
   display: none;
 }
 
@@ -209,4 +208,8 @@ body.reduced-effects .split-text .letter {
   opacity: 1;
   transform: none;
   animation: none;
+}
+
+body.reduced-effects .project-card {
+  transform: none !important;
 }

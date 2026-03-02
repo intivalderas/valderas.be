@@ -262,4 +262,46 @@ window.initPortrait = function () {
       resetFavicon();
     });
   }
+
+  // --- Intro: slap a sticker on first load to hint interactivity ---
+  var introPlayed = sessionStorage.getItem('portrait-intro');
+  if (!introPlayed) {
+    var stickerBar = container.querySelector('.hero__sticker-bar');
+    // Wait for portrait fade-in animation (1.2s delay + 0.8s duration = 2s)
+    setTimeout(function () {
+      // Place the cool sticker
+      var img = document.createElement('img');
+      img.src = '/assets/img/stickers/inti-cool.webp';
+      img.alt = '';
+      img.classList.add('hero__face-sticker');
+      img.style.transform = 'rotate(-3deg)';
+      frame.appendChild(img);
+      frame.classList.remove('hero__frame--slap');
+      void frame.offsetWidth;
+      frame.classList.add('hero__frame--slap');
+      playSlap();
+      setFavicon(img.src);
+
+      // Visual punch to compensate for blocked audio
+      frame.style.transition = 'transform 0.15s cubic-bezier(0.22, 1, 0.36, 1)';
+      frame.style.transform = 'rotate(-2deg) scale(0.96)';
+      setTimeout(function () {
+        frame.style.transform = 'rotate(1deg) scale(1.02)';
+        setTimeout(function () {
+          frame.style.transform = '';
+          frame.style.transition = '';
+        }, 150);
+      }, 150);
+
+      // Show the sticker bar
+      stickerBar.classList.add('hero__sticker-bar--intro');
+
+      // Hide the bar after a few seconds
+      setTimeout(function () {
+        stickerBar.classList.remove('hero__sticker-bar--intro');
+      }, 3000);
+
+      sessionStorage.setItem('portrait-intro', '1');
+    }, 2200);
+  }
 };

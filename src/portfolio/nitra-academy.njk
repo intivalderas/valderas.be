@@ -25,17 +25,17 @@ permalink: /portfolio/nitra-academy/
 ---
 
 <article class="case-study" id="content">
-  <a href="/" class="case-study__back">&larr; Back to overview</a>
+  <a href="/" class="case-study__back reveal">&larr; Back to overview</a>
 
-  <div class="case-study__tags">
+  <div class="case-study__tags reveal">
     <span class="tag">Product Design</span>
     <span class="tag">Zoho Creator</span>
     <span class="tag">Process Automation</span>
     <span class="tag">MVP</span>
   </div>
 
-  <h1 class="case-study__title">From spreadsheets to a system that keeps them certified</h1>
-  <p class="case-study__intro">
+  <h1 class="case-study__title reveal">From spreadsheets to a system that keeps them certified</h1>
+  <p class="case-study__intro reveal">
     Nitra Academy is a BeSaCC-VCA recognized examination center that trains hundreds of
     construction workers every year in safety, equipment operation, and fire prevention. They
     needed a system to manage bookings, track certifications, and stay audit-ready — on a
@@ -43,7 +43,7 @@ permalink: /portfolio/nitra-academy/
     it's been in daily use ever since.
   </p>
 
-  <div class="case-study__stats">
+  <div class="case-study__stats reveal">
     <div class="case-study__stat">
       <div class="case-study__stat-number">40+</div>
       <div class="case-study__stat-label">Courses managed</div>
@@ -58,15 +58,15 @@ permalink: /portfolio/nitra-academy/
     </div>
   </div>
 
-  <h2>The context</h2>
-  <p>
+  <h2 class="reveal">The context</h2>
+  <p class="reveal">
     Nitra Academy isn't just a training company — they're a recognized examination center.
     That distinction matters. Every diploma they issue gets registered in Belgium's Central
     Diploma Register (CDR). VCA safety certificates are valid for 10 years and need to be
     traceable. Companies that send their employees to Nitra face annual audits where
     incomplete records can cost them their own VCA certification.
   </p>
-  <p>
+  <p class="reveal">
     Before the system, all of this — bookings, participant data, certificate tracking,
     company accounts — lived in a patchwork of spreadsheets and manual processes. It
     worked, until it didn't. As the academy grew past 40 courses across six categories,
@@ -74,59 +74,59 @@ permalink: /portfolio/nitra-academy/
     on actually training people.
   </p>
 
-  <h2>The challenge</h2>
-  <p>
+  <h2 class="reveal">The challenge</h2>
+  <p class="reveal">
     Build a complete training management system that handles the full lifecycle: a company
     books a course, their employees attend, they pass (or don't), certificates are issued,
     and everyone can look them up years later. Three very different user groups need to
     interact with the same data:
   </p>
-  <ul>
+  <ul class="reveal">
     <li><strong>Nitra's team</strong> — manage course schedules, track attendance, issue certificates, handle invoicing, stay compliant with BeSaCC-VCA and QFOR requirements</li>
     <li><strong>Client administrators</strong> — book courses for their employees, track which certificates are valid and which are expiring, manage their company's training records</li>
     <li><strong>Pupils</strong> — find and verify their certifications through the public-facing Nitra Academy website</li>
   </ul>
-  <p>
+  <p class="reveal">
     The constraint: no enterprise budget. This had to be built lean, on a platform that
     Nitra could maintain themselves without needing a developer on retainer.
   </p>
 
-  <h2>The approach</h2>
-  <p>
+  <h2 class="reveal">The approach</h2>
+  <p class="reveal">
     I chose Zoho Creator as the platform — a low-code environment that gave us a relational
     database, custom forms, workflow automation, and a portal layer for external users, all
     within their existing Zoho One subscription. No additional licensing costs.
   </p>
-  <p>
+  <p class="reveal">
     The build started with the data model: courses, sessions, participants, companies,
     certificates, and the relationships between them. Getting this right was critical because
     everything else — the booking flow, the certificate lookup, the expiry tracking — depends
     on how cleanly the data connects.
   </p>
-  <p>
+  <p class="reveal">
     From there, I built outward:
   </p>
-  <ul>
+  <ul class="reveal">
     <li><strong>Internal dashboard</strong> for Nitra's team — course management, participant tracking, certificate generation, and compliance reporting</li>
     <li><strong>Company portal</strong> (Bedrijfsportaal) — a self-service interface where client administrators can book courses, manage their employees, and monitor certification status</li>
     <li><strong>Public certificate search</strong> — integrated into nitra-academy.be so pupils can look up their own certifications without needing an account</li>
   </ul>
 
-  <h2>What makes it work</h2>
-  <p>
+  <h2 class="reveal">What makes it work</h2>
+  <p class="reveal">
     The system isn't clever because it does a lot — it's clever because it connects things
     that used to be separate. When a participant completes a course, their certificate is
     generated, linked to their company, given an expiry date, and made searchable on the
     website. One action, no manual steps.
   </p>
-  <p>
+  <p class="reveal">
     For client administrators, the portal shows a live overview of their team's certifications:
     who's covered, who's expiring soon, and who needs to rebook. For a construction company
     facing annual VCA audits, that's not a nice-to-have — it's the difference between passing
     and scrambling.
   </p>
 
-  <div class="case-study__callout">
+  <div class="case-study__callout reveal">
     <p>
       The system handles the full chain: course catalog &rarr; booking &rarr; attendance &rarr;
       examination &rarr; certification &rarr; public lookup &rarr; expiry tracking &rarr; rebooking.
@@ -134,26 +134,26 @@ permalink: /portfolio/nitra-academy/
     </p>
   </div>
 
-  <h2>My role</h2>
-  <p>
+  <h2 class="reveal">My role</h2>
+  <p class="reveal">
     I owned the entire product: requirements gathering, data modeling, UX design, Zoho Creator
     development, workflow automation, portal configuration, and the integration with the public
     website. This wasn't a handoff-to-dev situation — I designed it, built it, and shipped it.
   </p>
-  <p>
+  <p class="reveal">
     Post-launch, I worked with the Nitra team to iterate based on real usage, tightening
     workflows and fixing the friction points that only show up once actual humans start
     clicking actual buttons.
   </p>
 
-  <h2>What I learned</h2>
-  <p>
+  <h2 class="reveal">What I learned</h2>
+  <p class="reveal">
     Low-code gets a bad reputation because people try to force enterprise complexity into it.
     The trick is knowing what to build and what to leave out. An MVP that covers 90% of the
     workflow and ships in weeks beats a perfect system that takes a year. Nitra didn't need
     SAP — they needed something that worked, today, and that they could run themselves.
   </p>
-  <p>
+  <p class="reveal">
     I also learned that the hardest part of building for regulated industries isn't the
     technology — it's understanding the compliance requirements deeply enough to build them
     into the system's DNA rather than bolting them on as an afterthought. When your data model

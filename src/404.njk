@@ -1,0 +1,80 @@
+---
+layout: base.njk
+title: "404 — Inti Valderas Caro"
+permalink: /404.html
+pageStyles: |
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .error-page__sticker {
+    width: clamp(150px, 30vw, 240px);
+    margin-bottom: 2rem;
+    animation: errorDrop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+  @keyframes errorDrop {
+    0% { opacity: 0; transform: translateY(-40px) rotate(-8deg); }
+    60% { transform: translateY(4px) rotate(2deg); }
+    100% { opacity: 1; transform: translateY(0) rotate(-3deg); }
+  }
+  .error-page__code {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.4s forwards;
+  }
+  .error-page__title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.5s forwards;
+  }
+  .error-page__text {
+    color: var(--gray-600);
+    font-size: 1rem;
+    max-width: 380px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.6s forwards;
+  }
+  .error-page__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.9em 1.8em;
+    border: 1px solid var(--black);
+    border-radius: 100px;
+    transition: all 0.4s var(--ease-out-expo);
+    opacity: 0;
+    animation: fadeUp 0.6s var(--ease-out-expo) 0.7s forwards;
+  }
+  .error-page__link:hover {
+    background: var(--black);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+---
+
+<div class="error-page">
+  <img src="/assets/img/stickers/inti-shocked.webp" alt="" class="error-page__sticker">
+  <div class="error-page__code">404</div>
+  <h1 class="error-page__title">This page doesn't exist</h1>
+  <p class="error-page__text">
+    You caught me off guard. Whatever was here is gone now — or never was.
+  </p>
+  <a href="/" class="error-page__link">&larr; Back to safety</a>
+</div>

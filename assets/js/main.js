@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   run(window.initNav);
   run(window.initSmoothScroll);
   run(window.initScrollReveal);
+  run(window.initCountUp);
   run(window.initTagHover);
 
   // Desktop-only interactions

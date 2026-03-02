@@ -247,7 +247,16 @@ window.initDepthParallax = function () {
     // Contact
     { sel: '.section--contact .section__title', speed: 12 },
     { sel: '.contact__email',  speed: 15 },
-    { sel: '.contact__links',  speed: -8 }
+    { sel: '.contact__links',  speed: -8 },
+
+    // Case studies
+    { sel: '.case-study__title', speed: 10 },
+    { sel: '.case-study__tags',  speed: -8 },
+    { sel: '.case-study__stats', speed: 6 },
+
+    // Blog
+    { sel: '.article__title',    speed: 10 },
+    { sel: '.article__meta',     speed: -8 }
   ];
 
   layers.forEach(function (layer) {
@@ -255,7 +264,7 @@ window.initDepthParallax = function () {
     els.forEach(function (el, i) {
       // Use the closest section as trigger so the transform doesn't
       // shift the trigger itself, which causes jumps on direction change
-      var section = el.closest('section, .hero, .marquee') || el.parentElement;
+      var section = el.closest('section, .hero, .marquee, article') || el.parentElement;
       gsap.fromTo(el,
         { y: -(layer.speed + (layer.stagger ? i * layer.stagger : 0)) / 2 },
         {
@@ -269,6 +278,49 @@ window.initDepthParallax = function () {
           }
         }
       );
+    });
+  });
+};
+
+
+window.initCountUp = function () {
+  var els = document.querySelectorAll('.case-study__stat-number');
+  if (!els.length) return;
+
+  if (prefersReducedMotion()) return;
+
+  els.forEach(function (el) {
+    var raw = el.textContent.trim();
+    var suffix = raw.replace(/^[\d.,]+/, '');      // e.g. "%", "+"
+    var numStr = raw.replace(/[^0-9.,]/g, '');     // e.g. "1,115", "79.7"
+    var hasComma = numStr.indexOf(',') !== -1;
+    var clean = numStr.replace(/,/g, '');
+    var target = parseFloat(clean);
+    if (isNaN(target)) return;
+
+    var decimals = clean.indexOf('.') !== -1 ? clean.split('.')[1].length : 0;
+
+    el.textContent = '0' + suffix;
+
+    gsap.to({ val: 0 }, {
+      val: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 90%',
+        once: true
+      },
+      onUpdate: function () {
+        var v = this.targets()[0].val;
+        var formatted = v.toFixed(decimals);
+        if (hasComma) {
+          var parts = formatted.split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          formatted = parts.join('.');
+        }
+        el.textContent = formatted + suffix;
+      }
     });
   });
 };

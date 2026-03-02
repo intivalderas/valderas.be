@@ -49,6 +49,14 @@
   border-color: var(--black);
 }
 
+/* --- Cursor spotlight --- */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* --- Custom cursor disabled --- */
 body.cursor--disabled {
   cursor: auto;
