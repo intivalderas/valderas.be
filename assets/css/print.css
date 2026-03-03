@@ -11,6 +11,7 @@
   .sidebar,
   .hero,
   .marquee,
+  .section--work,
   .section--about,
   .section--kind-words,
   .section--contact,
@@ -22,9 +23,12 @@
   #particleCanvas,
   .cursor,
   .cursor-follower,
+  .cursor-spotlight,
   .resume__actions,
   .sidebar-toggle,
   .sidebar__overlay,
+  .scroll-fade-top,
+  .scroll-fade-bottom,
   .skip-link {
     display: none !important;
   }
@@ -52,6 +56,10 @@
 
   body::before {
     display: none;
+  }
+
+  .main-content {
+    overflow: visible;
   }
 
   /* Compact header — inline layout */
