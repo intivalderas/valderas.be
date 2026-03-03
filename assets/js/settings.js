@@ -310,4 +310,38 @@ window.initSettings = function () {
     if (darkToggle) darkToggle.checked = isDark;
     localStorage.setItem('setting-dark-mode', String(isDark));
   };
+
+  // --- First-visit hint: animated toggle icon next to "Toggle things" ---
+  // Exposed so portrait.js can call it after the sticker intro
+  var hintShown = false;
+  window.showSettingsHint = function () {
+    if (hintShown) return;
+    if (document.body.classList.contains('reduced-effects')) return;
+    hintShown = true;
+
+    var hint = document.createElement('span');
+    hint.className = 'settings-hint-icon';
+    hint.setAttribute('aria-hidden', 'true');
+    hint.innerHTML =
+      '<svg width="20" height="12" viewBox="0 0 20 12" fill="none">' +
+        '<rect class="settings-hint-track" x="0.5" y="0.5" width="19" height="11" rx="5.5" stroke="currentColor"/>' +
+        '<circle class="settings-hint-knob" cx="6" cy="6" r="3.5" fill="currentColor"/>' +
+      '</svg>';
+    // Wrap toggle text in a span so we can position the icon relative to it
+    if (!toggle.querySelector('.settings-hint-wrap')) {
+      var wrap = document.createElement('span');
+      wrap.className = 'settings-hint-wrap';
+      wrap.textContent = toggle.textContent;
+      toggle.textContent = '';
+      toggle.appendChild(wrap);
+    }
+    toggle.querySelector('.settings-hint-wrap').appendChild(hint);
+    requestAnimationFrame(function () {
+      hint.classList.add('settings-hint-icon--visible');
+    });
+    setTimeout(function () {
+      hint.classList.add('settings-hint-icon--out');
+      hint.addEventListener('animationend', function () { hint.remove(); });
+    }, 1600);
+  };
 };

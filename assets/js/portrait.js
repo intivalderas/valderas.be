@@ -293,8 +293,9 @@ window.initPortrait = function () {
         }, 150);
       }, 150);
 
-      // Show the sticker bar
+      // Show the sticker bar + settings hint simultaneously
       stickerBar.classList.add('hero__sticker-bar--intro');
+      if (typeof window.showSettingsHint === 'function') window.showSettingsHint();
 
       // Hide the bar after a few seconds
       setTimeout(function () {

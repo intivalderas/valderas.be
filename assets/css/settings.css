@@ -213,3 +213,43 @@ body.reduced-effects .split-text .letter {
 body.reduced-effects .project-card {
   transform: none !important;
 }
+
+/* --- First-visit settings hint icon --- */
+.settings-hint-wrap {
+  position: relative;
+}
+
+.settings-hint-icon {
+  position: absolute;
+  left: calc(100% + 0.3em);
+  top: 50%;
+  translate: 0 -50%;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+  color: var(--gray-400);
+  pointer-events: none;
+}
+
+.settings-hint-icon--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.settings-hint-icon--visible .settings-hint-knob {
+  animation: settingsHintFlip 0.8s 0.2s var(--ease-out-expo) forwards;
+}
+
+@keyframes settingsHintFlip {
+  0%   { cx: 6; }
+  50%  { cx: 14; }
+  100% { cx: 6; }
+}
+
+.settings-hint-icon--out {
+  animation: settingsHintOut 0.3s ease forwards;
+}
+
+@keyframes settingsHintOut {
+  to { opacity: 0; transform: translateX(4px); }
+}

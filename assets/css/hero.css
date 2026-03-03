@@ -297,16 +297,18 @@
   font-size: 0.85rem;
   line-height: 1;
   color: rgba(0, 0, 0, 0.4);
-  transition: all 0.2s ease;
+  transition: all 0.3s var(--ease-out-expo);
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: rotate(90deg);
 }
 
 .hero__sticker-clear:hover {
   background: rgba(255, 255, 255, 0.6);
   color: rgba(0, 0, 0, 0.7);
+  transform: rotate(450deg);
 }
 
 /* --- Portrait responsive --- */
