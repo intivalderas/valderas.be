@@ -117,6 +117,9 @@ window.initConsent = function initConsent() {
   }
 
   // --- Track key interactions ---
+  // Contact email
+  var emailLink = document.querySelector('.contact__email');
+  if (emailLink) emailLink.addEventListener('click', function () { window.psTrack('Contact'); });
 
   // Social links
   document.querySelectorAll('.contact__link').forEach(function (link) {
